@@ -1,15 +1,21 @@
 package com.cloud.web.bookservice.model;
 
 import java.util.Set;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
+@DynamoDBTable(tableName = "hfuentepe_libros")
 public class Libro {
-
 	private String isbn;
 	private String titulo;
 	private String autor;
 	private String ignoroElCampo;
 	private Set<String> categorias;
 
+	@DynamoDBHashKey(attributeName = "isbn")
 	public String getIsbn() {
 		return isbn;
 	}
@@ -18,6 +24,7 @@ public class Libro {
 		this.isbn = isbn;
 	}
 
+	@DynamoDBRangeKey(attributeName = "titulo")
 	public String getTitulo() {
 		return titulo;
 	}
@@ -26,6 +33,7 @@ public class Libro {
 		this.titulo = titulo;
 	}
 
+	@DynamoDBAttribute(attributeName = "autor")
 	public String getAutor() {
 		return autor;
 	}
@@ -34,6 +42,7 @@ public class Libro {
 		this.autor = autor;
 	}
 
+	@DynamoDBAttribute(attributeName = "categorias")
 	public Set<String> getCategorias() {
 		return categorias;
 	}
@@ -42,6 +51,7 @@ public class Libro {
 		this.categorias = categorias;
 	}
 
+	@DynamoDBIgnore
 	public String getIgnoroElCampo() {
 		return ignoroElCampo;
 	}

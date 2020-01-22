@@ -14,12 +14,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.cloud.web.bookservice.model.Libro;
-import com.cloud.web.bookservice.services.LibrosService;
+import com.cloud.web.bookservice.services.LibrosDynamoDBService;
 
 @Path("libros")
 public class LibrosResource {
 	private static final Log LOGGER = LogFactory.getLog(LibrosResource.class);
-	private static LibrosService librosService = new LibrosService();
+	private static LibrosDynamoDBService librosService = new LibrosDynamoDBService();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
